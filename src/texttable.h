@@ -17,19 +17,19 @@
 #define TEXT_TABLE_MAX_X_POS            30  ///< Maximum left shift of the whole table
 #define TEXT_TABLE_MAX_ANSI_SEQ_LEN     24  ///< Maximum length for ANSI sequence use
 
-/**
- * @brief   One table entry
- */
+ /**
+  * @brief   One table entry
+  */
 typedef struct TextTableEntry_t
 {
-    struct TextTableEntry_t *nextEntry; ///< Pointer to next table entry
-    struct TextTableEntry_t *prevEntry; ///< Pointer to previous table entry
-    char *text;                         ///< The text of the table cell
-    size_t textLen;                     ///< Length of the text
-    size_t rowMaxTextLen;               ///< Maximum text length of all rows in the table
-    char *ansiSeq;                      ///< Holds the ANSI sequence
-    size_t ansiSeqLen;                  ///< Length of the ANSI sequence
-    char *writeTxt;                     ///< Write pointer
+  struct TextTableEntry_t* nextEntry; ///< Pointer to next table entry
+  struct TextTableEntry_t* prevEntry; ///< Pointer to previous table entry
+  char* text;                         ///< The text of the table cell
+  size_t textLen;                     ///< Length of the text
+  size_t rowMaxTextLen;               ///< Maximum text length of all rows in the table
+  char* ansiSeq;                      ///< Holds the ANSI sequence
+  size_t ansiSeqLen;                  ///< Length of the ANSI sequence
+  char* writeTxt;                     ///< Write pointer
 }TextTableEntry_t;
 
 /**
@@ -37,18 +37,18 @@ typedef struct TextTableEntry_t
  */
 typedef struct
 {
-    TextTableEntry_t *head;     ///< Pointer to first entry or NULL
-    TextTableEntry_t *tail;     ///< Pointer to last entry or NULL
-    size_t entries;             ///< Number of table entries
+  TextTableEntry_t* head;     ///< Pointer to first entry or NULL
+  TextTableEntry_t* tail;     ///< Pointer to last entry or NULL
+  size_t entries;             ///< Number of table entries
 
-    char charGridX;             ///< default '-'
-    char charGridBoundary;      ///< default '|'
-    char charGridSeparator;     ///< default '|'
-    char charHeadX;             ///< default '='
-    char charHeadBoundary;      ///< default '|'
-    char charHeadSeparator;     ///< default '|'
-    char charConnectorXY;       ///< default '+'
-    size_t spacesBetweenBorder; ///< Spaces (0x20) between column text and column border
+  char charGridX;             ///< default '-'
+  char charGridBoundary;      ///< default '|'
+  char charGridSeparator;     ///< default '|'
+  char charHeadX;             ///< default '='
+  char charHeadBoundary;      ///< default '|'
+  char charHeadSeparator;     ///< default '|'
+  char charConnectorXY;       ///< default '+'
+  size_t spacesBetweenBorder; ///< Spaces (0x20) between column text and column border
 }TextTable_t;
 
 /**
@@ -56,63 +56,63 @@ typedef struct
  */
 typedef enum TabStyle_e
 {
-    /// Example:
-    /** @code
-    +=============+=============+=============+
-    | Head1       | Head2       | Head3       |
-    +=============+=============+=============+
-    | Row2Column1 | Row2Column2 | Row2Column2 |
-    |             | ColumnRow2  |             |
-    | Row3Column1 | Row3Column2 | Row3Column2 |
-    +-------------+-------------+-------------+
-    @endcode */
-    TABSTYLE_REGULAR_HEAD_ON,
+  /// Example:
+  /** @code
+  +=============+=============+=============+
+  | Head1       | Head2       | Head3       |
+  +=============+=============+=============+
+  | Row2Column1 | Row2Column2 | Row2Column2 |
+  |             | ColumnRow2  |             |
+  | Row3Column1 | Row3Column2 | Row3Column2 |
+  +-------------+-------------+-------------+
+  @endcode */
+  TABSTYLE_REGULAR_HEAD_ON,
 
-    /// Example:
-    /** @code
-    +-------------+-------------+-------------+
-    | Head1       | Head2       | Head3       |
-    | Row2Column1 | Row2Column2 | Row2Column2 |
-    |             | ColumnRow2  |             |
-    | Row3Column1 | Row3Column2 | Row3Column2 |
-    +-------------+-------------+-------------+
-    @endcode */
-    TABSTYLE_REGULAR_HEAD_OFF,
+  /// Example:
+  /** @code
+  +-------------+-------------+-------------+
+  | Head1       | Head2       | Head3       |
+  | Row2Column1 | Row2Column2 | Row2Column2 |
+  |             | ColumnRow2  |             |
+  | Row3Column1 | Row3Column2 | Row3Column2 |
+  +-------------+-------------+-------------+
+  @endcode */
+  TABSTYLE_REGULAR_HEAD_OFF,
 
-    /// Example:
-    /** @code
-    +=============+=============+=============+
-    | Head1       | Head2       | Head3       |
-    +=============+=============+=============+
-    | Row2Column1 | Row2Column2 | Row2Column2 |
-    |             | ColumnRow2  |             |
-    +-------------+-------------+-------------+
-    | Row3Column1 | Row3Column2 | Row3Column2 |
-    +-------------+-------------+-------------+
-    @endcode */
-    TABSTYLE_SEPARATED_HEAD_ON,
+  /// Example:
+  /** @code
+  +=============+=============+=============+
+  | Head1       | Head2       | Head3       |
+  +=============+=============+=============+
+  | Row2Column1 | Row2Column2 | Row2Column2 |
+  |             | ColumnRow2  |             |
+  +-------------+-------------+-------------+
+  | Row3Column1 | Row3Column2 | Row3Column2 |
+  +-------------+-------------+-------------+
+  @endcode */
+  TABSTYLE_SEPARATED_HEAD_ON,
 
-    /// Example:
-    /** @code
-    +-------------+-------------+-------------+
-    | Head1       | Head2       | Head3       |
-    +-------------+-------------+-------------+
-    | Row2Column1 | Row2Column2 | Row2Column2 |
-    |             | ColumnRow2  |             |
-    +-------------+-------------+-------------+
-    | Row3Column1 | Row3Column2 | Row3Column2 |
-    +-------------+-------------+-------------+
-    @endcode */
-    TABSTYLE_SEPARATED_HEAD_OFF,
+  /// Example:
+  /** @code
+  +-------------+-------------+-------------+
+  | Head1       | Head2       | Head3       |
+  +-------------+-------------+-------------+
+  | Row2Column1 | Row2Column2 | Row2Column2 |
+  |             | ColumnRow2  |             |
+  +-------------+-------------+-------------+
+  | Row3Column1 | Row3Column2 | Row3Column2 |
+  +-------------+-------------+-------------+
+  @endcode */
+  TABSTYLE_SEPARATED_HEAD_OFF,
 
-    /// Example:
-    /** @code
-    Head1       Head2       Head3
-    Row2Column1 Row2Column2 Row2Column2
-    ColumnRow2
-    Row3Column1 Row3Column2 Row3Column2
-    @endcode */
-    TABSTYLE_COMACT
+  /// Example:
+  /** @code
+  Head1       Head2       Head3
+  Row2Column1 Row2Column2 Row2Column2
+  ColumnRow2
+  Row3Column1 Row3Column2 Row3Column2
+  @endcode */
+  TABSTYLE_COMACT
 
 }TabStyle_e;
 
