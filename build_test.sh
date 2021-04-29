@@ -10,6 +10,11 @@ rm -r $DIR_COV
 mkdir -p $DIR_BIN
 mkdir -p $DIR_COV
 
+rm texttable.gcno
+rm texttable.gcda
+rm texttable_test.gcno
+rm texttable_test.gcda
+
 ## Build
 CFLAGS="-std=c11 -O2 -g -pedantic -Wall -Wextra -Wpointer-arith -Wshadow -Wstrict-prototypes --coverage -DUNIT_TESTING"
 LIBS="-lcmocka"
